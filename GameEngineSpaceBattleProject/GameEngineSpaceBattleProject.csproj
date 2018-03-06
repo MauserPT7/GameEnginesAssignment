@@ -306,6 +306,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\AsteriodRotate.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LookAt.cs" />
