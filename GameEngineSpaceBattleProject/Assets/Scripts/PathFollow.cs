@@ -8,7 +8,8 @@ public class PathFollow : MonoBehaviour
     [HideInInspector]
     public Vector3 nextWaypoint;
     public float minimumDistance = 0.7f;
-    public float speed;
+    public float thrustSpeed;
+    public float turningSpeed;
     private float startTime;
     private float journeyLength;
 
@@ -32,12 +33,11 @@ public class PathFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(nextWaypoint);
         //pathGeneratorScript.pathGeneratorScript.NextWaypointCount();();
 
-        Debug.Log("Next to follow " + nextWaypoint);
+        //Debug.Log("Next to follow " + nextWaypoint);
         //Debug.Log(transform.position);
-        Debug.Log(minimumDistance);
+        //Debug.Log(minimumDistance);
 
         if (!followingPath)
         {
@@ -49,20 +49,28 @@ public class PathFollow : MonoBehaviour
     {
         nextWaypoint = pathGeneratorScript.nextWaypoint;
 
-        float distCovered = (Time.time - startTime) * speed;
+        float distCovered = (Time.time - startTime) * thrustSpeed;
         float fracJourney = distCovered / journeyLength;
 
-        transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, (speed * Time.deltaTime));
+        transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, (thrustSpeed * Time.deltaTime));
         //transform.position = Vector3.Lerp(transform.position, nextWaypoint, (Time.deltaTime));
 
         if ((transform.position - nextWaypoint).sqrMagnitude <= minimumDistance)
         {
             pathGeneratorScript.next++;
             journeyLength = Vector3.Distance(transform.position, nextWaypoint);
-            Debug.Log("Get next from script " + nextWaypoint);
+            //Debug.Log("Get next from script " + nextWaypoint);
         }
 
-        Debug.Log("Following path on " + nextWaypoint);
+        Turning();
+        //Debug.Log("Following path on " + nextWaypoint);
         //followingPath = true;
+    }
+
+    void Turning ()
+    {
+        Vector3 angleOfApproach = nextWaypoint - transform.position;
+        Quaternion rotateToPoint = Quaternion.LookRotation(angleOfApproach);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotateToPoint, turningSpeed * Time.deltaTime);
     }
 }

@@ -33,7 +33,7 @@ public class PathGenerator : MonoBehaviour
         for (int i = 0; i < waypointCount; i++)
         {
             waypoints.Add(transform.GetChild(i).position);
-            Debug.Log("Waypoint added " + i);
+            //Debug.Log("Waypoint added " + i);
         }
     }
 	
@@ -41,12 +41,12 @@ public class PathGenerator : MonoBehaviour
 	void Update () 
 	{
         nextWaypoint = waypoints[next];
-        Debug.Log("Next in update" + next);
+        //Debug.Log("Next in update" + next);
 	}
 
     public Vector3 GetNextWaypointInList ()
     {
-        Debug.Log("GetNextWaypointInList " + next);
+        //Debug.Log("GetNextWaypointInList " + next);
         return waypoints[next];
     }
 
@@ -66,7 +66,7 @@ public class PathGenerator : MonoBehaviour
 
     public bool LastWaypoint ()
     {
-        Debug.Log("Return last " + next);
+        //Debug.Log("Return last " + next);
         return next == waypoints.Count - 1;
     }
 }
