@@ -10,6 +10,7 @@ public class PathGenerator : MonoBehaviour
     public int next = 0;
     public int waypointCount;
     public Vector3 nextWaypoint;
+    bool isLooping = true;
 
     public void OnDrawGizmos()
     {
@@ -20,6 +21,7 @@ public class PathGenerator : MonoBehaviour
         {
             Transform previousWaypoint = transform.GetChild(i - 1);
             Transform nextWaypointPrivate = transform.GetChild(i % transform.childCount);
+
             Gizmos.DrawLine(previousWaypoint.transform.position, nextWaypointPrivate.transform.position);
         }
     }
@@ -33,7 +35,6 @@ public class PathGenerator : MonoBehaviour
         for (int i = 0; i < waypointCount; i++)
         {
             waypoints.Add(transform.GetChild(i).position);
-            //Debug.Log("Waypoint added " + i);
         }
     }
 	
@@ -41,32 +42,25 @@ public class PathGenerator : MonoBehaviour
 	void Update () 
 	{
         nextWaypoint = waypoints[next];
-        //Debug.Log("Next in update" + next);
 	}
 
     public Vector3 GetNextWaypointInList ()
     {
-        //Debug.Log("GetNextWaypointInList " + next);
         return waypoints[next];
     }
 
-    /*
     public void NextWaypointCount ()
     {
-        next = (next + 1) % waypoints.Count;
-        Debug.Log("NextWaypointCount " + next);
-
-        if (next != waypoints.Count - 1)
+        if(isLooping)
         {
+            next = (next + 1) % waypoints.Count;
+        } else if (next != waypoints.Count - 1)  {
             next++;
-            Debug.Log("Add to next" + next);
         }
     }
-    */
 
     public bool LastWaypoint ()
     {
-        //Debug.Log("Return last " + next);
         return next == waypoints.Count - 1;
     }
 }

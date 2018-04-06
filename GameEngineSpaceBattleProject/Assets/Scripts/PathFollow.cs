@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathFollow : MonoBehaviour
+public class PathFollow : MovementInterface
 {
     public PathGenerator pathGeneratorScript;
+
     [HideInInspector]
     public Vector3 nextWaypoint;
     public float minimumDistance = 0.7f;
-    public float thrustSpeed;
-    public float turningSpeed;
-    private float startTime;
-    private float journeyLength;
-
-    bool followingPath = false;
 
     public void OnDrawGizmos()
     {
@@ -21,56 +16,22 @@ public class PathFollow : MonoBehaviour
         Gizmos.DrawLine(transform.position, nextWaypoint);
     }
 
-    // Use this for initialization
-    void Start()
-    {
-        startTime = Time.time;
-        journeyLength = Vector3.Distance(transform.position, nextWaypoint);
-        //nextWaypoint = pathGeneratorScript.GetNextWaypointInList();
-        //FollowPath();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        //pathGeneratorScript.pathGeneratorScript.NextWaypointCount();();
 
-        //Debug.Log("Next to follow " + nextWaypoint);
-        //Debug.Log(transform.position);
-        //Debug.Log(minimumDistance);
-
-        if (!followingPath)
-        {
-            FollowPath();
-        }
     }
 
-    public void FollowPath()
+    public override Vector3 CalculateForce()
     {
-        nextWaypoint = pathGeneratorScript.nextWaypoint;
+        nextWaypoint = pathGeneratorScript.GetNextWaypointInList();
 
-        float distCovered = (Time.time - startTime) * thrustSpeed;
-        float fracJourney = distCovered / journeyLength;
-
-        transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, (thrustSpeed * Time.deltaTime));
-        //transform.position = Vector3.Lerp(transform.position, nextWaypoint, (Time.deltaTime));
-
-        if ((transform.position - nextWaypoint).sqrMagnitude <= minimumDistance)
+        if((transform.position - nextWaypoint).sqrMagnitude <= minimumDistance)
         {
-            pathGeneratorScript.next++;
-            journeyLength = Vector3.Distance(transform.position, nextWaypoint);
-            //Debug.Log("Get next from script " + nextWaypoint);
+            pathGeneratorScript.NextWaypointCount();
         }
-
-        Turning();
-        //Debug.Log("Following path on " + nextWaypoint);
-        //followingPath = true;
-    }
-
-    void Turning ()
-    {
-        Vector3 angleOfApproach = nextWaypoint - transform.position;
-        Quaternion rotateToPoint = Quaternion.LookRotation(angleOfApproach);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotateToPoint, turningSpeed * Time.deltaTime);
+        
+        Debug.Log(gameObject.name + " to point " + (pathGeneratorScript.next + 1));
+        return boidScript.SeekVector(nextWaypoint);
     }
 }

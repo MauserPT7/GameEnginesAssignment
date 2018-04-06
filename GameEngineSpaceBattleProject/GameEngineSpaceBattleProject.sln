@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngineSpaceBattleProject", "GameEngineSpaceBattleProject.csproj", "{E1B23C97-6761-05C9-EC37-C383677A4FDE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngineSpaceBattleProject.Plugins", "GameEngineSpaceBattleProject.Plugins.csproj", "{762DED2B-44E1-25D5-420A-E2F1B0D1077E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngineSpaceBattleProject", "GameEngineSpaceBattleProject.csproj", "{E1B23C97-6761-05C9-EC37-C383677A4FDE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngineSpaceBattleProject.Editor.Plugins", "GameEngineSpaceBattleProject.Editor.Plugins.csproj", "{D66121A8-707E-6FD9-5D0E-E79C9DB8E45B}"
 EndProject
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E1B23C97-6761-05C9-EC37-C383677A4FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1B23C97-6761-05C9-EC37-C383677A4FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1B23C97-6761-05C9-EC37-C383677A4FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1B23C97-6761-05C9-EC37-C383677A4FDE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{762DED2B-44E1-25D5-420A-E2F1B0D1077E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{762DED2B-44E1-25D5-420A-E2F1B0D1077E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{762DED2B-44E1-25D5-420A-E2F1B0D1077E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{762DED2B-44E1-25D5-420A-E2F1B0D1077E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1B23C97-6761-05C9-EC37-C383677A4FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B23C97-6761-05C9-EC37-C383677A4FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B23C97-6761-05C9-EC37-C383677A4FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B23C97-6761-05C9-EC37-C383677A4FDE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D66121A8-707E-6FD9-5D0E-E79C9DB8E45B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D66121A8-707E-6FD9-5D0E-E79C9DB8E45B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D66121A8-707E-6FD9-5D0E-E79C9DB8E45B}.Release|Any CPU.ActiveCfg = Release|Any CPU

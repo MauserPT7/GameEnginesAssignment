@@ -306,13 +306,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="GameEngineSpaceBattleProject.csproj">
-      <Project>{E1B23C97-6761-05C9-EC37-C383677A4FDE}</Project>
-      <Name>GameEngineSpaceBattleProject</Name>
-    </ProjectReference>
     <ProjectReference Include="GameEngineSpaceBattleProject.Plugins.csproj">
       <Project>{762DED2B-44E1-25D5-420A-E2F1B0D1077E}</Project>
       <Name>GameEngineSpaceBattleProject.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="GameEngineSpaceBattleProject.csproj">
+      <Project>{E1B23C97-6761-05C9-EC37-C383677A4FDE}</Project>
+      <Name>GameEngineSpaceBattleProject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

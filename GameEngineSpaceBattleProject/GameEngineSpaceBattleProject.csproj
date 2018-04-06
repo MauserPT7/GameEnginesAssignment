@@ -312,11 +312,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Arrive.cs" />
     <Compile Include="Assets\Scripts\AsteriodRotate.cs" />
+    <Compile Include="Assets\Scripts\Boid.cs" />
+    <Compile Include="Assets\Scripts\Flee.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LookAt.cs" />
+    <Compile Include="Assets\Scripts\MovementInterface.cs" />
     <Compile Include="Assets\Scripts\PathFollow.cs" />
     <Compile Include="Assets\Scripts\PathGenerator.cs" />
+    <Compile Include="Assets\Scripts\Pursue.cs" />
+    <Compile Include="Assets\Scripts\Seek.cs" />
     <Compile Include="Assets\Scripts\ShipBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
