@@ -271,4 +271,4 @@ MonoBehaviour:
   boidScript: {fileID: 0}
   pathGeneratorScript: {fileID: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}
-  minimumDistance: 0.3
+  minimumDistance: 15

@@ -12,20 +12,6 @@ public class PathGenerator : MonoBehaviour
     public Vector3 nextWaypoint;
     bool isLooping = true;
 
-    public void OnDrawGizmos()
-    {
-        int waypointCount = transform.childCount;
-        Gizmos.color = Color.green;
-
-        for (int i = 1; i < waypointCount; i++)
-        {
-            Transform previousWaypoint = transform.GetChild(i - 1);
-            Transform nextWaypointPrivate = transform.GetChild(i % transform.childCount);
-
-            Gizmos.DrawLine(previousWaypoint.transform.position, nextWaypointPrivate.transform.position);
-        }
-    }
-
     // Use this for initialization
     void Start () 
 	{
@@ -43,6 +29,20 @@ public class PathGenerator : MonoBehaviour
 	{
         nextWaypoint = waypoints[next];
 	}
+
+    public void OnDrawGizmos()
+    {
+        int waypointCount = transform.childCount;
+        Gizmos.color = Color.green;
+
+        for (int i = 1; i < waypointCount; i++)
+        {
+            Transform previousWaypoint = transform.GetChild(i - 1);
+            Transform nextWaypointPrivate = transform.GetChild(i % transform.childCount);
+
+            Gizmos.DrawLine(previousWaypoint.transform.position, nextWaypointPrivate.transform.position);
+        }
+    }
 
     public Vector3 GetNextWaypointInList ()
     {

@@ -16,12 +16,6 @@ public class PathFollow : MovementInterface
         Gizmos.DrawLine(transform.position, nextWaypoint);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public override Vector3 CalculateForce()
     {
         nextWaypoint = pathGeneratorScript.GetNextWaypointInList();

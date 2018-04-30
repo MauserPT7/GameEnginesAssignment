@@ -7,9 +7,10 @@ public class Boid : MonoBehaviour
     public List<MovementInterface> behaviours = new List<MovementInterface>();
 
     public float maxSpeed = 8.0f;
+    [HideInInspector]
     public float maxForce = 8.0f;
-    float mass = 1.0f;
     public float fleeDistance = 5.0f;
+    public float mass = 1.0f;
 
     [HideInInspector]
     public Vector3 velocity = Vector3.zero;
@@ -43,13 +44,6 @@ public class Boid : MonoBehaviour
         }
     }
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawLine(transform.position, transform.position + (force * 10.0f));
-    }
-
     public Vector3 SeekVector(Vector3 target)
     {
         Vector3 desiredVelocity = target - transform.position;
@@ -75,9 +69,9 @@ public class Boid : MonoBehaviour
             desiredVelocity.Normalize();
             desiredVelocity *= maxSpeed;
             Vector3 steeringVector = velocity - desiredVelocity;
-            steeringVector = steeringVector / mass;
+            steeringVector = (velocity - desiredVelocity) / mass;
 
-            return steeringVector;
+            return velocity - desiredVelocity;
         }
     }
 
@@ -85,18 +79,18 @@ public class Boid : MonoBehaviour
     {
         Vector3 desiredVelocity = target - transform.position;
 
-        float distance = desiredVelocity.magnitude;
+        float distance = (target - transform.position).magnitude;
 
         if (distance < arrivalRadius)
         {
-            desiredVelocity.Normalize();
+            (target - transform.position).Normalize();
             desiredVelocity *= maxSpeed * (distance / arrivalRadius);
         } else {
-            desiredVelocity.Normalize();
+            (target - transform.position).Normalize();
             desiredVelocity *= maxSpeed;
         }
 
-        return desiredVelocity - velocity;
+        return target - transform.position - velocity;
     }
 
     Vector3 CalculateForce()

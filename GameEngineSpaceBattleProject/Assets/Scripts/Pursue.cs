@@ -16,14 +16,14 @@ public class Pursue : MovementInterface
     void Start () 
 	{
         normalSpeed = boidScript.maxSpeed;
-        target = GameObject.Find("Cruiser");
+        target = GameObject.FindGameObjectWithTag("Player");
     }
-	
-	// Update is called once per frame
-	void Update () 
-	{
-        
-	}
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, target.transform.position);
+    }
 
     public override Vector3 CalculateForce()
     {
@@ -33,12 +33,12 @@ public class Pursue : MovementInterface
         if(pursueDistance >= minimumDistance)
         {
             boidScript.maxSpeed = chaseSpeed;
-        } else if (pursueDistance <= minimumDistance) {
+        } else {
             boidScript.maxSpeed = normalSpeed;
         }
 
         targetPosition = target.transform.position + (time * boidScript.velocity);
 
-        return boidScript.SeekVector(target.transform.position);
+        return boidScript.SeekVector(targetPosition);
     }
 }
